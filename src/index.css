@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-blur: 20px;
+  --primary-gradient: linear-gradient(135deg, #C4B5C0 0%, #B5C4B1 50%, #9B8B7C 100%);
+  --accent-glow: rgba(196, 181, 192, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #0F0F0F 0%, #1A1A1A 50%, #252525 100%);
+  color: #F5F1ED;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Card */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+}
+
+/* Primary Button with Gradient */
+.btn-primary {
+  background: linear-gradient(135deg, #C4B5C0 0%, #B5C4B1 100%);
+  color: #1A1A1A;
+  font-weight: 600;
+  border-radius: 9999px;
+  padding: 16px 48px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(196, 181, 192, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(196, 181, 192, 0.5);
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background: transparent;
+  color: #F5F1ED;
+  font-weight: 500;
+  border-radius: 9999px;
+  padding: 16px 48px;
+  border: 1px solid var(--glass-border);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Option Card */
+.option-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid transparent;
+  border-radius: 16px;
+  padding: 20px 24px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.option-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(196, 181, 192, 0.3);
+}
+
+.option-card.selected {
+  background: rgba(196, 181, 192, 0.15);
+  border-color: #C4B5C0;
+  box-shadow: 0 0 20px rgba(196, 181, 192, 0.3);
+}
+
+/* Progress Bar */
+.progress-bar {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #C4B5C0 0%, #B5C4B1 100%);
+  border-radius: 2px;
+  transition: width 0.5s ease;
+  box-shadow: 0 0 10px rgba(196, 181, 192, 0.5);
+}
+
+/* Breathing Animation for Button */
+@keyframes breathe {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(196, 181, 192, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 30px rgba(196, 181, 192, 0.6), 0 0 40px rgba(196, 181, 192, 0.2);
+  }
+}
+
+.btn-breathe {
+  animation: breathe 2s ease-in-out infinite;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Radar Chart Container */
+.radar-container {
+  filter: drop-shadow(0 0 20px rgba(196, 181, 192, 0.3));
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(196, 181, 192, 0.3);
+  border-radius: 3px;
+}
+
+/* Text Gradient */
+.text-gradient {
+  background: linear-gradient(135deg, #C4B5C0 0%, #B5C4B1 50%, #D4C5B9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Loading Spinner */
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 3px solid rgba(196, 181, 192, 0.2);
+  border-top-color: #C4B5C0;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Page Transition */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.5s ease;
+}
